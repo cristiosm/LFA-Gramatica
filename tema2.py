@@ -19,12 +19,12 @@ def acceptare(gramatica, simbol_s, cuvant):
             return False
 
     for tranzitie in gramatica[simbol_s]:
-        if tranzitie[0] == cuvant[0]:
+        if len(tranzitie) == 1 and tranzitie == cuvant[0]:
+            return True
+        elif len(tranzitie) == 2 and tranzitie[0] == cuvant[0]:
             restul_cuvant = cuvant[1:]
             if acceptare(gramatica, tranzitie[1], restul_cuvant):
                 return True
-        elif len(tranzitie) == 1 and tranzitie == cuvant[0]:
-            return True
 
     return False
 
